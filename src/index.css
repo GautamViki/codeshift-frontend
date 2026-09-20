@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+  --sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --bg: #edf0f3;
+  --panel: #ffffff;
+  --panel-2: #f4f6f8;
+  --ink: #141c26;
+  --muted: #5a6879;
+  --line: #cfd6de;
+  --accent: #2447f5;
+  --accent-ink: #ffffff;
+  --ok: #15785c;
+  --err: #b0301d;
+  --err-bg: #fbe9e5;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1319;
+    --panel: #151b23;
+    --panel-2: #1b232d;
+    --ink: #e4eaf1;
+    --muted: #8b98a8;
+    --line: #2a3441;
+    --accent: #7f95ff;
+    --accent-ink: #0e1319;
+    --ok: #4fc7a2;
+    --err: #ff8e7a;
+    --err-bg: #3a1c18;
+
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 var(--sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
