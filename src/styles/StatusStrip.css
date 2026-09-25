@@ -1,0 +1,58 @@
+.status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.status .good {
+  color: var(--ok);
+  font-weight: 500;
+}
+
+.status .bad {
+  color: var(--err);
+  font-weight: 500;
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.dot.ok {
+  background: var(--ok);
+}
+
+.dot.bad {
+  background: var(--err);
+}
+
+.dot.pulse {
+  background: var(--accent);
+  animation: shimmer 0.9s ease-in-out infinite alternate;
+}
+
+.sep {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 0.85;
+  }
+}

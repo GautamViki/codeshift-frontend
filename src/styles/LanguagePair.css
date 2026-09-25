@@ -1,0 +1,51 @@
+.pair {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sel {
+  position: relative;
+  display: block;
+}
+
+.sel select {
+  appearance: none;
+  -webkit-appearance: none;
+  font: 600 22px/1.2 var(--sans);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 42px 8px 14px;
+  cursor: pointer;
+}
+
+.sel::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.swap {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.swap:hover {
+  background: var(--panel-2);
+}

@@ -1,0 +1,23 @@
+.notice {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--err-bg);
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid var(--err);
+  font-size: 14px;
+}
+
+.notice strong {
+  color: var(--err);
+}
+
+.notice code {
+  font: 12.5px/1.45 var(--mono);
+  overflow-wrap: anywhere;
+}
+
+.notice span {
+  color: var(--muted);
+}

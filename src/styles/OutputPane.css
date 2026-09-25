@@ -1,0 +1,98 @@
+.ghost {
+  font: 500 13px var(--sans);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--panel-2);
+}
+
+.ghost:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.bar {
+  height: 2px;
+  overflow: hidden;
+}
+
+.bar.on::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 35%;
+  background: var(--accent);
+  animation: slide 1.1s ease-in-out infinite;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(300%);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 28px;
+  background: var(--panel);
+}
+
+.overlay strong {
+  font-size: 15px;
+}
+
+.overlay span {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 34ch;
+}
+
+.overlay.skel {
+  justify-content: flex-start;
+  padding: 14px;
+}
+
+.skel i {
+  display: block;
+  height: 10px;
+  border-radius: 3px;
+  margin: 12px 0;
+  background: var(--line);
+  animation: shimmer 1.3s ease-in-out infinite alternate;
+}
+
+.skel i.gap {
+  background: transparent;
+  animation: none;
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 0.85;
+  }
+}
+
+/* Applied by Monaco to the failing line in the output editor. */
+.error-line {
+  background: var(--err-bg);
+}

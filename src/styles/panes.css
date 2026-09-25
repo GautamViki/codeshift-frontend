@@ -1,0 +1,54 @@
+.panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pane-head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.meta {
+  font: 12px var(--mono);
+  color: var(--muted);
+}
+
+.editor-wrap {
+  position: relative;
+  height: 400px;
+}
+
+.editor-loading {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 820px) {
+  .panes {
+    grid-template-columns: 1fr;
+  }
+}
