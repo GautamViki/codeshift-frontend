@@ -1,4 +1,4 @@
-import type { ApiRequestError } from '../api/transpile'
+import type { ApiRequestError } from '../types/api'
 import { errorText, errorTitle } from '../lib/errors'
 import '../styles/ErrorNotice.css'
 

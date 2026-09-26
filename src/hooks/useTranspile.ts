@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ApiRequestError, transpile, type TranspileOptions } from '../api/transpile'
+import { ApiRequestError, type TranspileOptions } from '../types/api'
+import { transpile } from '../api/transpile'
 
 export type Status = 'idle' | 'loading' | 'done' | 'failed'
 

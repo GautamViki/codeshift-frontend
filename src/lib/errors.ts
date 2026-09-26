@@ -1,4 +1,4 @@
-import type { ApiRequestError } from '../api/transpile'
+import { ApiRequestError } from '../types/api'
 
 /** "main.go:69:4: declared and not used" -> 69 */
 export function findErrorLine(message: string): number | null {

@@ -1,0 +1,148 @@
+.file-output-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  position: relative;
+}
+
+/* ---- Empty / idle state ---- */
+.fo-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 28px;
+}
+
+.fo-empty strong {
+  font-size: 15px;
+}
+
+.fo-empty span {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 34ch;
+}
+
+/* ---- Skeleton loader ---- */
+.fo-skeleton {
+  padding: 20px 14px;
+}
+
+.fo-skeleton i {
+  display: block;
+  height: 10px;
+  border-radius: 3px;
+  margin: 12px 0;
+  background: var(--line);
+  animation: shimmer 1.3s ease-in-out infinite alternate;
+}
+
+.fo-skeleton i.gap {
+  background: transparent;
+  animation: none;
+}
+
+/* ---- Success result ---- */
+.fo-result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 24px 20px;
+  animation: fadeUp 0.3s ease-out;
+}
+
+.fo-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+}
+
+.fo-card.success {
+  border-color: var(--ok);
+  border-left-width: 3px;
+}
+
+.fo-check-icon {
+  flex: none;
+  color: var(--ok);
+}
+
+.fo-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.fo-filename {
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fo-validation {
+  font-size: 13.5px;
+  color: var(--ok);
+}
+
+/* ---- Meta grid ---- */
+.fo-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fo-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.fo-meta-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+.fo-meta-value {
+  font: 13px/1.4 var(--mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0.85;
+  }
+}

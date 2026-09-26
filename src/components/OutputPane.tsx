@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Editor, { type OnMount } from '@monaco-editor/react'
-import type { ApiRequestError } from '../api/transpile'
+import type { ApiRequestError } from '../types/api'
 import type { Status } from '../hooks/useTranspile'
 import { useMonacoTheme } from '../hooks/useMonacoTheme'
 import { findErrorLine } from '../lib/errors'
