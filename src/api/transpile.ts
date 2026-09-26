@@ -46,8 +46,6 @@ export class ApiRequestError extends Error {
     }
 }
 
-// Empty in development (the Vite proxy handles it).
-// For a production build, set VITE_API_BASE_URL, e.g. https://api.example.com
 const BASE: string = import.meta.env.VITE_API_BASE_URL ?? ''
 
 export function buildQuery(from: string, to: string, opts: TranspileOptions): string {
