@@ -1,32 +1,86 @@
-# React + TypeScript + Vite
+# CodeShift Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+CodeShift Web is the React and TypeScript frontend for CodeShift, an AI-assisted code-transpilation app. It connects to the CodeShift FastAPI backend to convert pasted code or uploaded source files, then displays generated output and relevant validation or request status.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Paste code or upload a source file for transpilation.
+- Select Python or Go as the source and target language in the current interface.
+- Swap source and target languages in the paste-code workflow.
+- Request output validation and use or bypass caching where supported.
+- View generated code, validation details, cache status, errors, and elapsed time.
+- Edit and inspect code in Monaco-powered editors.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 and TypeScript
+- Vite
+- Monaco Editor (`@monaco-editor/react`)
 
-## Expanding the Oxlint configuration
+## Requirements
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- Node.js and npm compatible with the versions used by this project.
+- A running CodeShift backend, locally or deployed, reachable by the browser.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Run locally
+
+Run these commands from the frontend project directory:
+
+```bash
+npm install
+cp .env.example .env.development
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Set the backend URL in `.env.development`. For a local backend listening on port 8080:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Open the local URL printed by Vite (typically `http://localhost:5173`). Run the backend separately; consult the backend project's README for its setup and required services.
+
+## Configuration
+
+The frontend reads `VITE_API_BASE_URL` as the base URL for API requests. Set it in `.env.development` for local work or `.env.production` for production builds.
+
+Vite variables prefixed with `VITE_` are included in browser-side code. Do not store secrets or private API keys in frontend environment files. The browser must be able to reach the configured backend, and the backend must allow the frontend origin through CORS.
+
+## Backend API
+
+| Workflow | Endpoint | Request |
+| --- | --- | --- |
+| Paste Code | `POST /api/v1/transpile-raw` | Plain-text code body; source and target languages plus validation and cache options are query parameters |
+| Upload File | `POST /api/v1/transpile-file` | Multipart form containing the file, target language, and cache option |
+
+The raw-code endpoint returns generated code as text and may include `X-Cached` and `X-Validation` response headers. The file endpoint returns JSON containing the success status, output filename and path, validation message, and cache status.
+
+## Available scripts
+
+Run from the frontend project directory:
+
+```bash
+npm run dev      # Start the Vite development server
+npm run build    # Type-check and build for production
+npm run preview  # Preview the production build locally
+npm run lint     # Run Oxlint
+```
+
+## Project structure
+
+```text
+src/
+  api/          Backend request functions
+  components/   Editors, language controls, upload, and output UI
+  hooks/        Transpilation request state and lifecycle
+  lib/          Shared frontend utilities
+  styles/       Application and editor-pane styles
+  types/        Shared TypeScript types
+  App.tsx       Main app layout and workflow selection
+  main.tsx      React application entry point
+```
